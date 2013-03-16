@@ -47,12 +47,16 @@ MapViewCtrl.prototype._createMap = function() {
 		self.map = response.map;
 		self._autoResize();
 		self._addToolbars();
+    self._addRealtime();
 	} );
 };
 
 MapViewCtrl.prototype._addToolbars = function() {
-	this.toolbar = esri.toolbars.Draw(this.map);
-	dojo.connect(this.toolbar, "onDrawEnd", this, this._addGraphic);
+  var self = this;
+	self.toolbar = esri.toolbars.Draw(this.map);
+	dojo.connect(self.toolbar, "onDrawEnd", function( geometry ) {
+    self.mapRef.push( geometry.toJson() );
+  } );
 }
 
 MapViewCtrl.prototype._addGraphic = function( geometry ) {
@@ -67,9 +71,16 @@ MapViewCtrl.prototype._addGraphic = function( geometry ) {
   else {
     symbol = this.toolbar.fillSymbol;
   }
-  console.log( JSON.stringify( geometry ) );
-  console.log( symbol );
 	this.map.graphics.add( new esri.Graphic( geometry, symbol ) );
+}
+
+MapViewCtrl.prototype._addRealtime = function() {
+  var self = this;
+  this.firebase = new Firebase( 'https://collaborative-mapping.firebaseio.com/' );
+  this.mapRef = this.firebase.child( 'maps/' + this.webmapId );
+  this.mapRef.on('child_added', function( ref ) {
+    self._addGraphic( esri.geometry.fromJson( ref.val() ), true );
+  });
 }
 
 MapViewCtrl.prototype._autoResize = function() {

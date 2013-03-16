@@ -1,4 +1,8 @@
-# Collaborative Mapping
+# Realtime Collaborative Mapping
+
+Frequently we encounter a business problem that requires a solution enabling multiple colleagues capture information on a map at the same time, in a dynamic fashion.  One such use case may be a workshop event, where you want to capture locations favoured by attendees - you could try that at the Palm Springs dev summit, if you ask attendees to mark up a map with their home location, all done real time, allowing the conversation to develop around the map edits - real time.
+
+Developments in Realtime Web technology (e.g. HTML5 WebSockets) now facilitate such solutions, in this example, edits are distributed in realtime via a third party API called Pusher.
 
 ## Choosing a map to edit
 
