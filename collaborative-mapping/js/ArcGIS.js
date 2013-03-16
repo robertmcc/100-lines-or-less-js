@@ -20,7 +20,7 @@ ChooseMapCtrl.$inject = [ '$scope', '$location' ];
 
 function MapViewCtrl($scope, $routeParams) {
 	var self = this;
-  this.webmapId = $routeParams.webmapId;
+  self.webmapId = $routeParams.webmapId;
 
   $scope.toolbar = function( type ) {
   	if( !type ) {
@@ -37,7 +37,7 @@ function MapViewCtrl($scope, $routeParams) {
 
 MapViewCtrl.prototype._createMap = function() {
 	var self = this;
-	if( !this.dojoReady || !this.contentReady ) { return; }
+	if( !self.dojoReady || !self.contentReady ) { return; }
 
 	var mapDeferred = esri.arcgis.utils.createMap(this.webmapId, "map", {
     	mapOptions: { slider: true, nav:false }
@@ -60,32 +60,30 @@ MapViewCtrl.prototype._addToolbars = function() {
 }
 
 MapViewCtrl.prototype._addGraphic = function( geometry ) {
-  var type = geometry.type;
   var symbol;
-  if (type === "point" || type === "multipoint") {
+  if (geometry.type === "point" || geometry.type === "multipoint") {
     symbol = this.toolbar.markerSymbol;
   }
-  else if (type === "line" || type === "polyline") {
+  else if (geometry.type === "line" || geometry.type === "polyline") {
     symbol = this.toolbar.lineSymbol;
   }
   else {
     symbol = this.toolbar.fillSymbol;
   }
 	this.map.graphics.add( new esri.Graphic( geometry, symbol ) );
-}
+};
 
 MapViewCtrl.prototype._addRealtime = function() {
   var self = this;
-  this.firebase = new Firebase( 'https://collaborative-mapping.firebaseio.com/' );
-  this.mapRef = this.firebase.child( 'maps/' + this.webmapId );
+  self.mapRef = new Firebase( 'https://collaborative-mapping.firebaseio.com/maps/' + self.webmapId );
   this.mapRef.on('child_added', function( ref ) {
-    self._addGraphic( esri.geometry.fromJson( ref.val() ), true );
+    self._addGraphic( esri.geometry.fromJson( ref.val() ) );
   });
 }
 
 MapViewCtrl.prototype._autoResize = function() {
 	var self = this;
-	dojo.connect(self.map, 'resize', this, function(extent, width, height) { 
+	dojo.connect(self.map, 'resize', function(extent, width, height) { 
 		self.map.__resizeCenter = self.map.extent.getCenter();
 		setTimeout(function() {
 			self.map.centerAt(self.map.__resizeCenter);
