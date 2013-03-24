@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=7,IE=9">   
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no">
+  <title>ESRI fly</title>
+  <link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3/js/esri/css/esri.css">
+  <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3compact"></script>
+  <!-- Load my JavaScript and CSS -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <script src="js/fly.js"></script>
+</head>
+  <body>
+      <div class="panel">
+      <div class="message" id="instructions">Urgent transport of <span id="what" class="user-message"></span> to <span id="where"></span></div>
+      <div class="controls"> 
+        <div class="buttons">
+          <button id="basemap0" class="btn btn-primary btn-inverse" onclick="start()">Start</button>
+        </div>
+      </div>
+      <div class="message">Your time: <span id="userMessage" class="user-message">0</span></div>
+    </div>
+
+    <div id="mapDiv"></div>
+  </body>
+</html>
