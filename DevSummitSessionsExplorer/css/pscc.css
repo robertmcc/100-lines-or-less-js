@@ -46,7 +46,7 @@ html, body {
     padding: 10px;
     width: 85%;
     font-size: 1.3em;
-    background: white url(../images/search-icon.jpg) left no-repeat;
+    background: white url(http://i.imgur.com/LuVtLfp.jpg) left no-repeat;
     padding-left: 32px;
     border-color:Black;
     border-width:2px;
@@ -65,7 +65,7 @@ html, body {
     margin-top:30px;
     width:100%;
     height:100%;
-    background-image: url(../images/ajaxloader.gif);
+    background-image: url(http://i.imgur.com/awIML3c.gif);
     background-position: top;
     background-repeat: no-repeat;
 }
