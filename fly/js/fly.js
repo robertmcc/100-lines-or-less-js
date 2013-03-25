@@ -39,6 +39,7 @@ function start() {
 }
 function tick() {
   document.getElementById('userMessage').innerHTML = (++time);
+  if (time % 50 === 0) map.centerAt(new esri.geometry.Point([plane.cent.x, plane.cent.y], new esri.SpatialReference({ wkid:102100 })));
   move(plane, 2);
 }
 function move(feature, distance) {
