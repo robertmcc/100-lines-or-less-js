@@ -2,10 +2,10 @@ dojo.require('esri.map');
 dojo.require('esri.graphic');
 dojo.require('esri.geometry');
 dojo.require('esri.tasks.geometry');
-var map, planeG, gameTickInterval, destP, destG, time, plane;
-var items = ['trousers', 'sour pickles', 'ice axes', 'trombones', 'voodoo dolls'];
+var map, planeG, gameTickInterval, destP, destG, time, plane, kbrd=false;
+var items=['trousers','sour pickles','ice axes','trombones','voodoo dolls'];
 function init() {
-  require(['dojo/text!./places.json', 'dojo/text!./plane.json'], function (a, b) {
+require(['dojo/text!./places.json', 'dojo/text!./plane.json'],function (a,b) {
     capitals = JSON.parse(a);
     planeG = JSON.parse(b);
     map = new esri.Map('mapDiv', {basemap: 'streets',center: [-100, 50],
@@ -20,7 +20,7 @@ function start() {
   var dest = pickOne(capitals);
   document.getElementById('instructions').className = 'message';
   document.getElementById('what').innerHTML = pickOne(items);
-  document.getElementById('where').innerHTML = dest.capital + ', ' + dest.country;
+  document.getElementById('where').innerHTML=dest.capital+', '+dest.country;
   destP = new esri.geometry.Point(dest.y, dest.x);
   destG = new esri.Graphic(destP, new esri.symbol.SimpleMarkerSymbol())
   map.graphics.add(destG);
@@ -38,8 +38,9 @@ function start() {
   }
 }
 function tick() {
-  document.getElementById('userMessage').innerHTML = (++time);
-  if (time % 50 === 0) map.centerAt(new esri.geometry.Point([plane.cent.x, plane.cent.y], new esri.SpatialReference({ wkid:102100 })));
+  document.getElementById('userMessage').innerHTML=Math.floor((++time)/30.303);
+  if (time % 50 === 0) map.centerAt(new esri.geometry.Point([plane.cent.x,
+      plane.cent.y], new esri.SpatialReference({ wkid:102100 })));
   move(plane, 2);
 }
 function move(feature, distance) {
