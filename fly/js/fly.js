@@ -29,6 +29,7 @@ function start() {
     plane = new esri.Graphic(planeG);
     map.graphics.add(plane);
     plane.cent = { x:-1663297.5653581168, y: 6448545.565071885};
+    plane.rot = 1.57079633; // 12 o'clock due to how plane drawed
     plane.rot = 1.57079633; // 12 o'clock
   }
   gameTickInterval = window.setInterval(tick, 33);
