@@ -25,7 +25,8 @@ Best of luck!
 12. [Leap into ArcGIS](http://esri.github.com/100-lines-or-less-js/LeapInfoArcGIS/index.html) by [cbupp](https://github.com/cbupp)
 13. [Air quality Egg Viewer](http://esri.github.com/100-lines-or-less-js/AirQualityEggViewer/index.html) by [mpfeil](https://github.com/mpfeil)
 14. [AmbientLands](http://esri.github.com/100-lines-or-less-js/ambientlands/index.html) by [mpfeil](https://github.com/bdelville)
-15. ...
+15. [Dev Summit Session Explorer](http://esri.github.com/100-lines-or-less-js/DevSummitSessionsExplorer/index.html) by [mpfeil](https://github.com/orengal)
+16. ...
 
 
 ## Contest Period
