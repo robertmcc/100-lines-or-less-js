@@ -29,15 +29,15 @@ function start() {
     plane = new esri.Graphic(planeG);
     map.graphics.add(plane);
     plane.cent = { x:-1663297.5653581168, y: 6448545.565071885};
-    plane.rot = 1.57079633; // 12 o'clock due to how plane drawed
+    plane.rot = 1.57079633; // 12 o'clock due to how plane drew
     rotate(plane, 90);
   }
-  gameTickInterval = window.setInterval(tick, 33);
   document.onkeypress = function (e) {
     var c = e.charCode;
-    if (c in {97:'',122:'',91:''}) rotate(plane, 10, true); // keys: z, a, [
-    else if (c in {100:'', 93:'', 120:''}) rotate(plane, -10, true); // keys: x, d, ]
+    if (c in {97:'a',122:'z',91:'['}) rotate(plane, 10, true);
+    else if (c in {100:'d', 93:']', 120:'x'}) rotate(plane, -10, true);
   }
+  gameTickInterval = window.setInterval(tick, 33);
 }
 function tick() {
   document.getElementById('userMessage').innerHTML=Math.floor((++time)/30.303);
@@ -78,7 +78,7 @@ function stop() {
   document.getElementById('summary').className = 'summary';
   document.getElementById('result').innerHTML = Math.floor(time / 30.303);
   map.graphics.remove(destG);
-  window.onkeypress = null;
+  //window.onkeypress = null;
 }
 var rotate = function (feature, angle, fromUser) {
   if (fromUser) kbrd = true;
