@@ -78,7 +78,7 @@ function stop() {
   document.getElementById('summary').className = 'summary';
   document.getElementById('result').innerHTML = Math.floor(time / 30.303);
   map.graphics.remove(destG);
-  //window.onkeypress = null;
+  window.onkeypress = null;
 }
 var rotate = function (feature, angle, fromUser) {
   if (fromUser) kbrd = true;
