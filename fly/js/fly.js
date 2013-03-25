@@ -14,6 +14,7 @@ function init() {
 }
 function pickOne(array) {return array[Math.floor(Math.random()*array.length)]}
 function start() {
+  document.getElementById('start').disabled = true;
   time = 0;
   var from = capitals[Math.floor(Math.random() * capitals.length)];
   var dest = pickOne(capitals);
@@ -62,6 +63,7 @@ function move(feature, distance) {
 }
 function stop() {
   window.clearInterval(gameTickInterval);
+  document.getElementById('start').disabled = false;
   map.graphics.remove(destG);
   document.onkeypress = null;
 }
