@@ -27,7 +27,8 @@ Best of luck!
 14. [AmbientLands](http://esri.github.com/100-lines-or-less-js/ambientlands/index.html) by [bdelville](https://github.com/bdelville)
 15. [Dev Summit Session Explorer](http://esri.github.com/100-lines-or-less-js/DevSummitSessionsExplorer/index.html) by [orengal](https://github.com/orengal)
 16. [County Stats](http://esri.github.com/100-lines-or-less-js/CountyStats/index.html) by [TheBryanMac](https://github.com/TheBryanMac)
-17. ...
+17. [Flight Simulator](http://esri.github.com/100-lines-or-less-js/flight-simulator/flight-simulator.html) by [kryger](https://github.com/kryger)
+18. ...
 
 
 ## Contest Period
