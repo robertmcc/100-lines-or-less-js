@@ -9,9 +9,16 @@
   <script src="http://serverapi.arcgisonline.com/jsapi/arcgis/3.3compact"></script>
   <!-- Load my JavaScript and CSS -->
   <link rel="stylesheet" type="text/css" href="css/examples.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
   <script src="js/fly.js"></script>
 </head>
-  <body>
+  <body id="main">
+      <div id="summary" class="invisible">
+        <p class="panel">Well done! It took you <span id="result">0</span> seconds to get there.</p>
+      </div>
+      <div id="help" class="invisible">
+        <p class="panel">Use the 'a' and 'd' keys to turn. <small>You may have to click on the map area in Firefox to make the keyboard events work...</small></p>
+      </div>
       <div class="panel">
       <div class="invisible" id="instructions">Urgent transport of <span id="what" class="user-message"></span> to <span id="where"></span>!</div>
       <div class="controls"> 

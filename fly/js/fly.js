@@ -15,6 +15,7 @@ require(['dojo/text!./places.json', 'dojo/text!./plane.json'],function (a,b) {
 function pickOne(array) {return array[Math.floor(Math.random()*array.length)]}
 function start() {
   document.getElementById('start').disabled = true;
+  document.getElementById('summary').className = 'invisible';
   time = 0;
   var from = capitals[Math.floor(Math.random() * capitals.length)];
   var dest = pickOne(capitals);
@@ -41,6 +42,10 @@ function tick() {
   document.getElementById('userMessage').innerHTML=Math.floor((++time)/30.303);
   if (time % 50 === 0) map.centerAt(new esri.geometry.Point([plane.cent.x,
       plane.cent.y], new esri.SpatialReference({ wkid:102100 })));
+  if (time > 50 && !kbrd) {
+    document.getElementById('help').className='help';
+    kbrd = true;
+  }
   move(plane, 2);
 }
 function move(feature, distance) {
@@ -69,10 +74,14 @@ function teleport(plane, x, y) {
 function stop() {
   window.clearInterval(gameTickInterval);
   document.getElementById('start').disabled = false;
+  document.getElementById('summary').className = 'summary';
+  document.getElementById('result').innerHTML = Math.floor(time / 30.303);
   map.graphics.remove(destG);
   document.onkeypress = null;
 }
-var rotate = function (feature, angle) {
+var rotate = function (feature, angle, fromUser) {
+  if (fromUser) kbrd = true;
+  document.getElementById('help').className='invisible';
   var newGeom = feature.geometry;
   var a = angle * Math.PI / 180;
   feature.rot += a;
