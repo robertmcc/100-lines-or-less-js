@@ -33,8 +33,8 @@ function start() {
   gameTickInterval = window.setInterval(tick, 33);
   document.onkeypress = function (e) {
     var c = e.charCode;
-    if (c === 97) rotate(plane, 10);
-    else if (c === 100) rotate(plane, -10);
+    if (c in {97:'',122:'',91:''}) rotate(plane, 10); // keys: z, a, [
+    else if (c in {100:'', 93:'', 120:''}) rotate(plane, -10); // keys: x, d, ]
   }
 }
 function tick() {
