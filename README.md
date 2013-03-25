@@ -26,7 +26,8 @@ Best of luck!
 13. [Air quality Egg Viewer](http://esri.github.com/100-lines-or-less-js/AirQualityEggViewer/index.html) by [mpfeil](https://github.com/mpfeil)
 14. [AmbientLands](http://esri.github.com/100-lines-or-less-js/ambientlands/index.html) by [bdelville](https://github.com/bdelville)
 15. [Dev Summit Session Explorer](http://esri.github.com/100-lines-or-less-js/DevSummitSessionsExplorer/index.html) by [orengal](https://github.com/orengal)
-16. ...
+16. [County Stats](http://esri.github.com/100-lines-or-less-js/CountyStats/index.html) by [TheBryanMac](https://github.com/TheBryanMac)
+17. ...
 
 
 ## Contest Period
