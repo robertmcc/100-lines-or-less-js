@@ -8,8 +8,7 @@ function init() {
 require(['dojo/text!./places.json', 'dojo/text!./plane.json'],function (a,b) {
     capitals = JSON.parse(a);
     planeG = JSON.parse(b);
-    map = new esri.Map('mapDiv', {basemap: 'streets',center: [-100, 50],
-      zoom: 3 });
+    map=new esri.Map('mapDiv',{basemap:'streets',center:[-100,50],zoom:3});
   });
 }
 function pickOne(array) {return array[Math.floor(Math.random()*array.length)]}
@@ -32,17 +31,17 @@ function start() {
     plane.rot = 1.57079633; // 12 o'clock due to how plane drew
     rotate(plane, 90);
   }
-  document.onkeypress = function (e) {
+  window.onkeypress = function (e) {
     var c = e.charCode;
-    if (c in {97:'a',122:'z',91:'['}) rotate(plane, 10, true);
-    else if (c in {100:'d', 93:']', 120:'x'}) rotate(plane, -10, true);
+    if (c in {97:'a',122:'z',91:'['}) { rotate(plane, 10, true); }
+    else if (c in {100:'d', 93:']', 120:'x'}) { rotate(plane, -10, true); }
   }
   gameTickInterval = window.setInterval(tick, 33);
 }
 function tick() {
   document.getElementById('userMessage').innerHTML=Math.floor((++time)/30.303);
-  if (time % 50 === 0) map.centerAt(new esri.geometry.Point([plane.cent.x,
-      plane.cent.y], new esri.SpatialReference({ wkid:102100 })));
+  if (time % 50 === 0) { map.centerAt(new esri.geometry.Point([plane.cent.x,
+      plane.cent.y], new esri.SpatialReference({ wkid:102100 }))); }
   if (time > 50 && !kbrd) {
     document.getElementById('help').className='help';
     kbrd = true;
@@ -56,10 +55,10 @@ function move(feature, distance) {
     y: Math.sin(feature.rot) * distance * 50000
   }
   teleport(feature, change.x, change.y);
-  if (feature.cent.x < -20037508.3417) teleport(plane, 20037508.3417*2, 0);
-  if (feature.cent.y >  19999999) teleport(plane, 0, -19999999*2);
-  if (feature.cent.x > 20037508.3417) teleport(plane, -20037508.3417*2, 0);
-  if (feature.cent.y < -19999999) teleport(plane, 0, 19999999*2);
+  if (feature.cent.x < -20037508.3417) { teleport(plane, 20037508.3417*2, 0); }
+  if (feature.cent.y >  19999999) { teleport(plane, 0, -19999999*2); }
+  if (feature.cent.x > 20037508.3417) { teleport(plane, -20037508.3417*2, 0); }
+  if (feature.cent.y < -19999999) { teleport(plane, 0, 19999999*2); }
 }
 function teleport(plane, x, y) {
   var g = plane.geometry;
@@ -70,7 +69,7 @@ function teleport(plane, x, y) {
   plane.cent = { x: plane.cent.x + x, y: plane.cent.y + y };
   plane.setGeometry(g);
   var planeExtent = new esri.geometry.Polyline(g.toJson()).getExtent();
-  if (planeExtent.intersects(destP)) stop();
+  if (planeExtent.intersects(destP)) { stop(); }
 }
 function stop() {
   window.clearInterval(gameTickInterval);
@@ -81,7 +80,7 @@ function stop() {
   window.onkeypress = null;
 }
 var rotate = function (feature, angle, fromUser) {
-  if (fromUser) kbrd = true;
+  if (fromUser) {kbrd = true; }
   document.getElementById('help').className='invisible';
   var newGeom = feature.geometry;
   var a = angle * Math.PI / 180;
