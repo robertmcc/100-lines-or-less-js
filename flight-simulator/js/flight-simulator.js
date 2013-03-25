@@ -3,7 +3,7 @@ dojo.require('esri.graphic');
 dojo.require('esri.geometry');
 dojo.require('esri.tasks.geometry');
 var map, planeG, gameTickInterval, destP, destG, time, plane, kbrd=false;
-var items=['trousers','sour pickles','ice axes','trombones','voodoo dolls'];
+var items=['trousers','sour pickles','ice skates','trombones','voodoo dolls'];
 function init() {
 require(['dojo/text!./places.json', 'dojo/text!./plane.json'],function (a,b) {
     capitals = JSON.parse(a);
