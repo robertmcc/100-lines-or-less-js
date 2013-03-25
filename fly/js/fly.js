@@ -45,21 +45,24 @@ function tick() {
 function move(feature, distance) {
   var g = feature.geometry;
   var change = {
-    x: Math.cos(feature.rot) * distance * 5,
-    y: Math.sin(feature.rot) * distance * 5
+    x: Math.cos(feature.rot) * distance * 50000,
+    y: Math.sin(feature.rot) * distance * 50000
   }
+  teleport(feature, change.x, change.y);
+  if (feature.cent.x < -20037508.3417) teleport(plane, 20037508.3417*2, 0);
+  if (feature.cent.y >  19999999) teleport(plane, 0, -19999999*2);
+  if (feature.cent.x > 20037508.3417) teleport(plane, -20037508.3417*2, 0);
+  if (feature.cent.y < -19999999) teleport(plane, 0, 19999999*2);
+}
+function teleport(plane, x, y) {
+  var g = plane.geometry;
   for (var r in g.paths[0]) {
-    var p = g.paths[0][r];
-    p[0] = p[0] + change.x * 10000;
-    p[1] = p[1] + change.y * 10000;
+    g.paths[0][r][0] = g.paths[0][r][0] + x;
+    g.paths[0][r][1] = g.paths[0][r][1] + y;
   }
-  feature.cent = {
-    x: feature.cent.x + change.x * 10000,
-    y: feature.cent.y + change.y * 10000
-  };
-  feature.setGeometry(g);
+  plane.cent = { x: plane.cent.x + x, y: plane.cent.y + y };
+  plane.setGeometry(g);
   var planeExtent = new esri.geometry.Polyline(g.toJson()).getExtent();
-  console.log('plane ext=', planeExtent, 'point',destP);
   if (planeExtent.intersects(destP)) stop();
 }
 function stop() {
