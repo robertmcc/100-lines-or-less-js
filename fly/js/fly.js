@@ -35,8 +35,8 @@ function start() {
   gameTickInterval = window.setInterval(tick, 33);
   document.onkeypress = function (e) {
     var c = e.charCode;
-    if (c in {97:'',122:'',91:''}) rotate(plane, 10); // keys: z, a, [
-    else if (c in {100:'', 93:'', 120:''}) rotate(plane, -10); // keys: x, d, ]
+    if (c in {97:'',122:'',91:''}) rotate(plane, 10, true); // keys: z, a, [
+    else if (c in {100:'', 93:'', 120:''}) rotate(plane, -10, true); // keys: x, d, ]
   }
 }
 function tick() {
@@ -78,7 +78,7 @@ function stop() {
   document.getElementById('summary').className = 'summary';
   document.getElementById('result').innerHTML = Math.floor(time / 30.303);
   map.graphics.remove(destG);
-  document.onkeypress = null;
+  window.onkeypress = null;
 }
 var rotate = function (feature, angle, fromUser) {
   if (fromUser) kbrd = true;
