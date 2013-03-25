@@ -28,8 +28,10 @@ Best of luck!
 15. [Dev Summit Session Explorer](http://esri.github.com/100-lines-or-less-js/DevSummitSessionsExplorer/index.html) by [orengal](https://github.com/orengal)
 16. [County Stats](http://esri.github.com/100-lines-or-less-js/CountyStats/CountyStats.html) by [TheBryanMac](https://github.com/TheBryanMac)
 17. [Bees](http://esri.github.com/100-lines-or-less-js/bees/bees.html) by [smcshinsky](https://github.com/smcshinsky)
-18. ...
+18. [Flight Simulator](http://esri.github.com/100-lines-or-less-js/flight-simulator/flight-simulator.html) by [Łukasz Kryger](https://github.com/Łukasz-Kryger)
+19. ...
 
+ 
 
 ## Contest Period
 - Starts: 9:00 AM PST Friday, Mar 8, 2013
