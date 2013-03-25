@@ -90,9 +90,9 @@ MapViewCtrl.prototype._autoResize = function() {
 		}, 200);
 	} );
 	var resize = function() {
-		jQuery( "#map" ).height( jQuery(window).height() - 50 );
+    dojo.byId( "map" ).style.height = ( dojo.window.getBox().h - 50 ) + 'px';
 		self.map.resize();
 	};
-	jQuery( window ).resize( resize );
+	dojo.connect( window, 'resize', resize );
 	resize();
 };
