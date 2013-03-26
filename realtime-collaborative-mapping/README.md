@@ -2,19 +2,23 @@
 
 Frequently we encounter a business problem that requires a solution enabling multiple colleagues to capture information on a map at the same time, in a dynamic fashion.  One such use case may be a workshop event, where you want to capture locations favoured by attendees - you could try that at the Palm Springs dev summit, if you ask attendees to mark up a map with their home location, all done realtime, allowing the conversation to develop around the map edits - **realtime**.
 
-Developments in Realtime Web technology (e.g. HTML5 WebSockets) now facilitate such solutions, in this example, edits are synchronised and persisted in realtime via a third party APIs.
+Developments in Realtime Web technology (e.g. HTML5 WebSockets) now facilitate such solutions, in this example, edits are synchronised and persisted in realtime via a third party API.
 
-## Choosing a map to edit
+## How to Use
 
-Every web map has a unique 'webmap' ID. Simply enter that ID and click "Go".
+### Choosing a map to edit
 
-## Editing a map
+Every web map has a unique 'webmap' ID. Simply enter that ID and click "Go" or use one of the pre-selected maps.
+
+### Editing a map
 
 Select a drawing tool from the toolbar and start drawing on the map.
 
-## Share a URL and start editing
+### Share a URL and start collaboratively editing in realtime
 
-In order to start collaboratively editing just share the URL for the map your are currently viewing.
+In order to start collaboratively editing just share the URL for the map your are currently viewing. You can do this by copying from the address bar or the in-app input box, or by scanning the QR code.
+
+You can test this out yourself by opening up the same URL in two different browsers. **Better still**, copy the URL and share with your friends!
 
 ## References
 
