@@ -35,10 +35,17 @@ function start() {
   gameTickInterval = window.setInterval(tick, 33);
 }
 function tick() {
-  if (time % 50 === 0) { map.centerAt(new esri.geometry.Point([plane.cent.x,
-      plane.cent.y], new esri.SpatialReference({ wkid:102100 }))); }
   move(plane, 100000);
   $('#userMessage').html(Math.floor((++time) / 30.303));
+  if (time % 50 === 0) {
+    var cent = new esri.geometry.Point([plane.cent.x, plane.cent.y],
+                               new esri.SpatialReference({ wkid:102100 }));
+    var zoom = map.getZoom();
+    if (!$('#mapDiv_graphics_layer').find('path').length) {
+      if (zoom > 0)  zoom--;
+    } else  if (zoom < 3) zoom++;
+    map.centerAndZoom(cent, zoom);
+  }
   if (time > 50 && !kbrd) {
     $('#help').show();
     kbrd = true;
