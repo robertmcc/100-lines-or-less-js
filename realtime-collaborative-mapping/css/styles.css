@@ -16,7 +16,6 @@ html, body {
 	margin-top: 50px;
 }
 
-
 #toolbar {
 	position: fixed;
 	top: 60px;
@@ -49,9 +48,18 @@ html, body {
 	width: 200px;
 }
 
-.form-webmap {
+.intro, .form-webmap {
 	margin: auto;
+}
+
+.intro {
 	margin-top: 80px;
+	width: 400px;
+	text-align: justify;
+	margin-bottom: 40px;
+}
+
+.form-webmap {
 	width: 300px;
 	text-align: center;
 }
@@ -59,8 +67,7 @@ html, body {
 .example-maps {
 	margin: auto;
 	margin-top: 40px;
-	width: 300px;
-}
+	width: 300px;}
 
 .example-maps h3 {
 	text-align: center;
