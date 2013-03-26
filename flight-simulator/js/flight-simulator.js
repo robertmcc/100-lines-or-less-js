@@ -41,14 +41,14 @@ function tick() {
                                new esri.SpatialReference({ wkid:102100 }));
     var zoom = map.getZoom();
     if (!$('#mapDiv_graphics_layer').find('path').length) {
-      if (zoom > 0)  zoom--;
-    } else  if (zoom < 3) zoom++;
+      if (zoom > 0)  {zoom--;
+      zoomStable=false;}
+    } else  if (zoom < 3 && zoomStable) {zoom++} else {zoomStable=true;}
     map.centerAndZoom(cent, zoom);
   }
   if (time > 50 && !kbrd) {
     $('#help').show();
-    kbrd = true;
-  }
+    kbrd = true; }
 }
 function move(feature, distance) {
   var g = feature.geometry;
