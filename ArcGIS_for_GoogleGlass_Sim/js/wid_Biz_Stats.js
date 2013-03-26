@@ -33,26 +33,26 @@ var wid_biz_stat = {
         	var alias = pResult.fieldAliases;
          	var featAtt = pResult.features[i].attributes;
           	for (att in featAtt) {
-            	s = s + "<tr><td><img src='images\\" + alias[att].replace(":","") + ".png'></td>";
+            	s = s + "<tr><td><img src='images//" + alias[att].replace(":","") + ".png'></td>";
             	if(att == "X15001_I") {
             		var index = featAtt[att] - 100;
-            		if(index >= 0){s = s + "<td><img src='images\\up.png'></td>";rate = rate + 1;}
-            		else{s = s + "<td><img src='images\\down.png'></td>";}	
+            		if(index >= 0){s = s + "<td><img src='images/up.png'></td>";rate = rate + 1;}
+            		else{s = s + "<td><img src='images/down.png'></td>";}	
             	}
             	else if(att == "MEDHINC_CY") {
             		var income = featAtt[att] - 52762;
-            		if(income >= 0){s = s + "<td><img src='images\\up.png'></td>";rate = rate + 1;}
-            		else{s = s + "<td><img src='images\\down.png'></td>";}
+            		if(income >= 0){s = s + "<td><img src='images/up.png'></td>";rate = rate + 1;}
+            		else{s = s + "<td><img src='images/down.png'></td>";}
             	}
             	else {
             		var retail = featAtt[att] - 12990;
-            		if(retail >= 0){s = s + "<td><img src='images\\up.png'></td>";rate = rate + 1;}
-            		else{s = s + "<td><img src='images\\down.png'></td>";}            		
+            		if(retail >= 0){s = s + "<td><img src='images/up.png'></td>";rate = rate + 1;}
+            		else{s = s + "<td><img src='images/down.png'></td>";}            		
             	}
             	s = s + "</tr>";
           	}
         }
-       	s = s + "</table></td><td colspan='2'><img src='images\\rate"+rate+".png'></td></tr>";
+       	s = s + "</table></td><td colspan='2'><img src='images/rate"+rate+".png'></td></tr>";
 		dojo.byId('biz_info').innerHTML = s + "</table>";
 	}	
 };
