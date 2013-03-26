@@ -31,7 +31,10 @@ Best of luck!
 18. [Flight Simulator](http://esri.github.com/100-lines-or-less-js/flight-simulator/flight-simulator.html) by [Łukasz Kryger](https://github.com/Łukasz-Kryger)
 19. [Esri WX Forecast](http://esri.github.com/100-lines-or-less-js/esri-weather-forecast/index.html) by [azmikamis](https://github.com/azmikamis)
 20. [Hurricane Sandy Wind Map](http://esri.github.com/100-lines-or-less-js/sandywindmap/sandywindmap.html) by [hwernstrom](https://github.com/hwernstrom)
-21. ... 
+21. [ArcGIS for GoogleGlass Sim](http://esri.github.com/100-lines-or-less-js/ArcGIS_for_GoogleGlass_Sim/index.htm) by [prev801](https://github.com/prev801)
+22. [Realtime Collaborative Mapping](http://esri.github.com/100-lines-or-less-js/realtime-collaborative-mapping/index.html) by [leggetter](https://github.com/leggetter)
+23. [Beer GeoRSS](http://esri.github.com/100-lines-or-less-js/beerGeoRSS/beerGeoRSS.html) by [boeckMt](https://github.com/boeckMt)
+24. ...
 
 ## Contest Period
 - Starts: 9:00 AM PST Friday, Mar 8, 2013
