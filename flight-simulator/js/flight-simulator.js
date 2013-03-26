@@ -56,14 +56,14 @@ function move(feature, distance) {
   if (feature.cent.x > 20037508.3417) { teleport(plane, -20037508.3417*2, 0); }
   if (feature.cent.y < -19999999) { teleport(plane, 0, 19999999*2); }
 }
-function teleport(plane, x, y) {
-  var g = plane.geometry;
+function teleport(feature, x, y) {
+  var g = feature.geometry;
   for (var r in g.paths[0]) {
     g.paths[0][r][0] = g.paths[0][r][0] + x;
     g.paths[0][r][1] = g.paths[0][r][1] + y;
   }
-  plane.cent = { x: plane.cent.x + x, y: plane.cent.y + y };
-  plane.setGeometry(g);
+  feature.cent = { x: feature.cent.x + x, y: feature.cent.y + y };
+  feature.setGeometry(g);
   var planeExtent = new esri.geometry.Polyline(g.toJson()).getExtent();
   if (planeExtent.intersects(destP)) { stop(); }
 }
