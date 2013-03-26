@@ -30,7 +30,8 @@ Best of luck!
 17. [Bees](http://esri.github.com/100-lines-or-less-js/bees/bees.html) by [smcshinsky](https://github.com/smcshinsky)
 18. [Flight Simulator](http://esri.github.com/100-lines-or-less-js/flight-simulator/flight-simulator.html) by [Łukasz Kryger](https://github.com/Łukasz-Kryger)
 19. [Esri WX Forecast](http://esri.github.com/100-lines-or-less-js/esri-weather-forecast/index.html) by [azmikamis](https://github.com/azmikamis)
-20. ... 
+20. [Hurricane Sandy Wind Map](http://esri.github.com/100-lines-or-less-js/sandywindmap/sandywindmap.html) by [hwernstrom](https://github.com/hwernstrom)
+21. ... 
 
 ## Contest Period
 - Starts: 9:00 AM PST Friday, Mar 8, 2013
