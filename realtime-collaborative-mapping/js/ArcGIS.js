@@ -43,7 +43,7 @@ MapViewCtrl.prototype._createMap = function() {
 	var self = this;
 	if( !self.dojoReady || !self.contentReady ) return;
 
-	esri.arcgis.utils.createMap( this.webmapId, "map" ).then( function( response ) {
+	esri.arcgis.utils.createMap( this.webmapId, "map", { mapOptions: { zoom: 4 } }).then( function( response ) {
 		self.map = response.map;
 		self._autoResize();
 		self._addToolbars();
@@ -78,7 +78,7 @@ MapViewCtrl.prototype._addRealtime = function() {
   this.mapRef.on('child_removed', function( ref ) {
     for( var i = 0, l = self.map.graphics.graphics.length; i < l; ++i ) {
       if( self.map.graphics.graphics[ i ].attributes && self.map.graphics.graphics[ i ].attributes.name == ref.name() ) {
-        self.map.graphics.remove( removeGraphic );
+        self.map.graphics.remove( self.map.graphics.graphics[ i ] );
         break;
       }
     }
