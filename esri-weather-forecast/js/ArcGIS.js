@@ -17,72 +17,72 @@ var weatherIconMap = [
 		'snowflake', 'snowflake', 'snowflake', 'cloud', 'rain', 'snow', 'lightning'
 	];
 function init() {
-	map = new esri.Map("map", {	basemap: "gray", center: [-28,40], zoom: 4 });
-	dojo.connect(map, "onLoad", function(theMap) {
+	map = new esri.Map('map', {	basemap: 'gray', center: [-28,40], zoom: 4 });
+	dojo.connect(map, 'onLoad', function(theMap) {
 		var oviewMap = new esri.dijit.OverviewMap({ map: map, visible: true });
 		oviewMap.startup(); });
 	if (featureLayer) return;
-    setStyle("progress", "progress");
 	var infoTemplate = new esri.InfoTemplate();
-	infoTemplate.setTitle("City Info");
+	infoTemplate.setTitle('Weather Forecast');
 	infoTemplate.setContent(getWindowContent);
-    featureLayer = new esri.layers.FeatureLayer("http://services.arcgis.com/oKgs2tbjK6zwTdvi/arcgis/rest/services/Major_World_Cities/FeatureServer/0", {
-        mode: esri.layers.FeatureLayer.MODE_SNAPSHOT, outFields: ["*"],
+	var s = 'http://services.arcgis.com/oKgs2tbjK6zwTdvi/arcgis/rest/services/'+
+			'Major_World_Cities/FeatureServer/0';
+    featureLayer = new esri.layers.FeatureLayer(s, 
+		{ mode: esri.layers.FeatureLayer.MODE_SNAPSHOT, outFields: ["*"],
         opacity: .90, infoTemplate: infoTemplate });
-    var symbol = createPictureSymbol("images/blue-dot-small.png", 0, 1, 12);
+    var symbol = new esri.symbol.PictureMarkerSymbol({ 'angle': 0, 'xoffset': 0,
+		'yoffset': 1, 'type': 'esriPMS', 'url': 'images/blue-dot-small.png', 
+		'contentType': 'image/png', 'width':12, 'height': 12 });
     featureLayer.renderer = new esri.renderer.SimpleRenderer(symbol);
     map.addLayer(featureLayer);
-	map.infoWindow.resize(400, 275);
-    dojo.connect(featureLayer,"onSelectionComplete", function (features) {
-        var extent;
-        for (var i = 0; i < features.length; i++) {
-            if (!extent) extent = features[i]._extent;
-            else extent.union(features[i]._extent);
-        }
-        if (extent) map.setExtent(extent);
-        setStyle("progress", "progress hidden");				
-    });
-}
-function createPictureSymbol(url, xOffset, yOffset, size) {
-    return new esri.symbol.PictureMarkerSymbol({ "angle": 0, "xoffset": xOffset, "yoffset": yOffset, "type": "esriPMS",
-        "url": url, "contentType": "image/png", "width":size, "height": size });
 }
 function setStyle(elementName, className) {
     var element = document.getElementById(elementName);
     if (element) element.className = className;
 }
 function getWindowContent(graphic) {
+	var deferred = new dojo.Deferred();
 	var results;
-	var q = "select * from geo.places where text='"+graphic.attributes.NAME + " " + graphic.attributes.COUNTRY+"'";
-	var yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(q)+"&format=json";
+	var q = "select * from geo.places where text='"+graphic.attributes.NAME+
+			" "+graphic.attributes.COUNTRY+"'";
+	var yql = 'http://query.yahooapis.com/v1/public/yql?q='+
+				encodeURIComponent(q)+'&format=json';
 	var woeid, content;
-	$.ajax({
-	async: false, url: yql, dataType: "json",
+	$.ajax({ async: false, url: yql, dataType: 'json',
 	success: function(r) {
-        if(r.query.count == 1){ woeid = r.query.results.place.woeid; }
-		else if(r.query.count > 1){ woeid = r.query.results.place[0].woeid; }
-		q = "select * from weather.forecast where woeid="+woeid+" and u='c'";
-		yql = "http://query.yahooapis.com/v1/public/yql?q="+encodeURIComponent(q)+"&format=json";
-		$.ajax({
-		 async: false, url: yql, dataType: "json",
-		 success: function(r) {
-		    if (r.query.results.channel.item.title == 'City not found'){
-				content = '<p>Information unavailable</p>'; }
-			else{
-				var item = r.query.results.channel.item.condition;
-				content = '<div id="weather" class="loaded" ><ul id="scroller">' +
-					'<li><img src="images/icons/'+ weatherIconMap[item.code] +'.png" /><p class="day">Now</p> <p class="cond">'+ item.text + ' <b>'+item.temp+'°C</b></p></li>';
+    if(r.query.count == 1){ woeid = r.query.results.place.woeid; }
+	else if(r.query.count > 1){ woeid = r.query.results.place[0].woeid; }
+	q = "select * from weather.forecast where woeid="+woeid+" and u='c'";
+	yql = 'http://query.yahooapis.com/v1/public/yql?q='+
+			encodeURIComponent(q)+'&format=json';console.log(yql);
+		$.ajax({ async: false, url: yql, dataType: 'json',
+		success: function(r) {
+		if (r.query.results.channel.item.title == 'City not found'){
+			content = '<p>Information unavailable</p>'; }
+		else{
+			var item = r.query.results.channel.item.condition;
+			content = '<p>'+r.query.results.channel.title+'</p><div id="weather" class="loaded" ><ul id="scroller">'+
+			'<li><img src="images/icons/'+ weatherIconMap[item.code]+'.png"/>'+
+			'<p class="day">Now</p>'+
+			'<p class="cond">'+item.text+
+			'<b>'+item.temp+'°C</b></p></li>';
 			for (var i=0;i<2;i++){
 			item = r.query.results.channel.item.forecast[i];
-			content += '<li><img src="images/icons/'+ weatherIconMap[item.code] +'.png" /><p class="day">'+item.day+'</p> <p class="cond">'+ item.text + ' <b>'+item.low+'°C / '+item.high+'°C</b></p></li>';
+			content +=
+			'<li><img src="images/icons/'+weatherIconMap[item.code]+'.png"/>'+
+			'<p class="day">'+item.day+'</p>'+
+			'<p class="cond">'+item.text+
+			'<b>'+item.low+'°C / '+item.high+'°C</b></p></li>';
 			}
-			content += '</ul><button onclick="showPrevSlide()" class="arrow previous">Prev</button>' +
-        	'<button onclick="showNextSlide()" class="arrow next">Next</button></div>';
-			}
+			content += '</ul>'+
+			'<button onclick="showPrevSlide()" class="arrow previous"></button>'+
+        	'<button onclick="showNextSlide()" class="arrow next"></button>'+
+			'</div>';
+			deferred.callback(content);}
 		}});
     }});
 	currentSlide = 0;
-	return content;
+	return deferred.results[0];
 }
 function showPrevSlide() { showSlide(currentSlide-1); }
 function showNextSlide() { showSlide(currentSlide+1); }
@@ -90,7 +90,8 @@ function showSlide(i){
 	var weatherDiv = $('#weather');
 	var scroller = $('#scroller');
 	var items = scroller.find('li');
-	if (i >= items.length || i < 0 || scroller.is(':animated')){ return false; }
+	if (i >= items.length || i < 0 || scroller.is(':animated')){
+		return false; }
 	weatherDiv.removeClass('first last');
 	if(i == 0){ weatherDiv.addClass('first'); }
 	else if (i == items.length-1){ weatherDiv.addClass('last'); }
