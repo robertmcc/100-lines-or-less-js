@@ -1,7 +1,6 @@
 dojo.require('esri.map');
 dojo.require('esri.graphic');
 dojo.require('esri.geometry');
-dojo.require('esri.tasks.geometry');
 var map, planeG, gameTickInterval, destP, destG, time, plane, kbrd=false;
 var items=['trousers','sour pickles','ice skates','trombones','voodoo dolls'];
 function init() {
@@ -27,7 +26,7 @@ function start() {
     plane = new esri.Graphic(planeG);
     map.graphics.add(plane);
     plane.cent = { x:-1663297.5653581168, y: 6448545.565071885};
-    plane.rot = 1.57079633; // 12 o'clock due to how plane drew
+    plane.rot = 1.57079633; // 12 o'clock due to how plane drawn
     rotate(plane, 90);
   }
   Mousetrap.bind('a', function() {rotate(plane, 10, true);});
