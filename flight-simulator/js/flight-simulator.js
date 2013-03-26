@@ -13,14 +13,13 @@ require(['dojo/text!./places.json', 'dojo/text!./plane.json'],function (a,b) {
 }
 function pickOne(array) {return array[Math.floor(Math.random()*array.length)]}
 function start() {
-  document.getElementById('start').disabled = true;
-  document.getElementById('summary').className = 'invisible';
   time = 0;
-  var from = capitals[Math.floor(Math.random() * capitals.length)];
+  $('#start').attr('disabled', true);
+  $('#instructions').show();
+  $('#summary').hide();
+  $('#what').html(pickOne(items));
   var dest = pickOne(capitals);
-  document.getElementById('instructions').className = 'message';
-  document.getElementById('what').innerHTML = pickOne(items);
-  document.getElementById('where').innerHTML=dest.capital+', '+dest.country;
+  $('#where').html(dest.capital + ', ' + dest.country);
   destP = new esri.geometry.Point(dest.y, dest.x);
   destG = new esri.Graphic(destP, new esri.symbol.SimpleMarkerSymbol())
   map.graphics.add(destG);
@@ -39,11 +38,11 @@ function start() {
   gameTickInterval = window.setInterval(tick, 33);
 }
 function tick() {
-  document.getElementById('userMessage').innerHTML=Math.floor((++time)/30.303);
   if (time % 50 === 0) { map.centerAt(new esri.geometry.Point([plane.cent.x,
       plane.cent.y], new esri.SpatialReference({ wkid:102100 }))); }
+  $('#userMessage').html(Math.floor((++time) / 30.303));
   if (time > 50 && !kbrd) {
-    document.getElementById('help').className='help';
+    $('#help').show();
     kbrd = true;
   }
   move(plane, 2);
@@ -73,15 +72,15 @@ function teleport(plane, x, y) {
 }
 function stop() {
   window.clearInterval(gameTickInterval);
-  document.getElementById('start').disabled = false;
-  document.getElementById('summary').className = 'summary';
-  document.getElementById('result').innerHTML = Math.floor(time / 30.303);
+  $('#start').attr('disabled', false);
+  $('#summary').show();
+  $('#result').html(Math.floor(time / 30.303));
   map.graphics.remove(destG);
   window.onkeypress = null;
 }
 var rotate = function (feature, angle, fromUser) {
-  if (fromUser) {kbrd = true; }
-  document.getElementById('help').className='invisible';
+  if (fromUser) {kbrd = true; 
+    $('#help').hide();}
   var newGeom = feature.geometry;
   var a = angle * Math.PI / 180;
   feature.rot += a;
