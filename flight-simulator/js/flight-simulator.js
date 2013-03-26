@@ -30,11 +30,8 @@ function start() {
     plane.rot = 1.57079633; // 12 o'clock due to how plane drew
     rotate(plane, 90);
   }
-  window.onkeypress = function (e) {
-    var c = e.charCode;
-    if (c in {97:'a',122:'z',91:'['}) { rotate(plane, 10, true); }
-    else if (c in {100:'d', 93:']', 120:'x'}) { rotate(plane, -10, true); }
-  }
+  Mousetrap.bind('a', function() {rotate(plane, 10, true);});
+  Mousetrap.bind('d', function() {rotate(plane, -10, true);});
   gameTickInterval = window.setInterval(tick, 33);
 }
 function tick() {
@@ -76,7 +73,7 @@ function stop() {
   $('#summary').show();
   $('#result').html(Math.floor(time / 30.303));
   map.graphics.remove(destG);
-  window.onkeypress = null;
+  Mousetrap.reset();
 }
 var rotate = function (feature, angle, fromUser) {
   if (fromUser) {kbrd = true; 
