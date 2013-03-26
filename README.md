@@ -34,7 +34,8 @@ Best of luck!
 21. [ArcGIS for GoogleGlass Sim](http://esri.github.com/100-lines-or-less-js/ArcGIS_for_GoogleGlass_Sim/index.htm) by [prev801](https://github.com/prev801)
 22. [Realtime Collaborative Mapping](http://esri.github.com/100-lines-or-less-js/realtime-collaborative-mapping/index.html) by [leggetter](https://github.com/leggetter)
 23. [Beer GeoRSS](http://esri.github.com/100-lines-or-less-js/beerGeoRSS/beerGeoRSS.html) by [boeckMt](https://github.com/boeckMt)
-24. ...
+24. [World Migration Explorer](http://esri.github.com/100-lines-or-less-js/WorldMigrationExplorer/challenge.html) by [GeotecUJI](https://github.com/GeotecUJI)
+25. ...
 
 ## Contest Period
 - Starts: 9:00 AM PST Friday, Mar 8, 2013
