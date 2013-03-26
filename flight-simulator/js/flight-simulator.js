@@ -37,18 +37,18 @@ function start() {
 function tick() {
   if (time % 50 === 0) { map.centerAt(new esri.geometry.Point([plane.cent.x,
       plane.cent.y], new esri.SpatialReference({ wkid:102100 }))); }
+  move(plane, 100000);
   $('#userMessage').html(Math.floor((++time) / 30.303));
   if (time > 50 && !kbrd) {
     $('#help').show();
     kbrd = true;
   }
-  move(plane, 2);
 }
 function move(feature, distance) {
   var g = feature.geometry;
   var change = {
-    x: Math.cos(feature.rot) * distance * 50000,
-    y: Math.sin(feature.rot) * distance * 50000
+    x: Math.cos(feature.rot) * distance,
+    y: Math.sin(feature.rot) * distance
   }
   teleport(feature, change.x, change.y);
   if (feature.cent.x < -20037508.3417) { teleport(plane, 20037508.3417*2, 0); }
