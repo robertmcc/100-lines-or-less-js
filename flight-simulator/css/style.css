@@ -1,8 +1,6 @@
-
 .invisible {
-   display: none !important
+   display:none
 }
-
 
 .summary {
   z-index:500;
@@ -12,10 +10,10 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: -200px;
+  margin-top: -55px;
   width: 300px;
   height: 110px;
-  margin-left: -300px;
+  margin-left: -150px;
 }
 
 .help {
@@ -26,8 +24,8 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  margin-top: -200px;
+  margin-top: -70px;
   width: 400px;
-  height: 150px;
-  margin-left: -300px;
+  height: 140px;
+  margin-left: -200px;
 }
