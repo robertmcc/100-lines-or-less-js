@@ -20,6 +20,15 @@ In order to start collaboratively editing just share the URL for the map your ar
 
 You can test this out yourself by opening up the same URL in two different browsers. **Better still**, copy the URL and share with your friends!
 
+## What next?
+
+* Security - Firebase provides an authentication mechanism which isn't in use in this application.
+* Clean the code - Wow, it's tough getting all that functionality into 100 lines of JS
+* Share the same map between groups - at the moment everybody on the map edits at the same time. It would be nice to be able to share the same map but with a unique ID which represents your version of the map.
+* Versioning and edit history - easily acheived and definitely nice to have.
+* Select, edit and delete individual graphics.
+* Auto URL shortening - nicer for sharing.
+
 ## References
 
 * ESRI
