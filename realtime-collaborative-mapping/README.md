@@ -28,6 +28,7 @@ You can test this out yourself by opening up the same URL in two different brows
 * Versioning and edit history - easily acheived and definitely nice to have.
 * Select, edit and delete individual graphics.
 * Auto URL shortening - nicer for sharing.
+* Add extent information to the URL for improved sharing.
 
 ## References
 
