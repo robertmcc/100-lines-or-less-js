@@ -29,9 +29,8 @@ Best of luck!
 16. [County Stats](http://esri.github.com/100-lines-or-less-js/CountyStats/CountyStats.html) by [TheBryanMac](https://github.com/TheBryanMac)
 17. [Bees](http://esri.github.com/100-lines-or-less-js/bees/bees.html) by [smcshinsky](https://github.com/smcshinsky)
 18. [Flight Simulator](http://esri.github.com/100-lines-or-less-js/flight-simulator/flight-simulator.html) by [Łukasz Kryger](https://github.com/Łukasz-Kryger)
-19. ...
-
- 
+19. [Esri WX Forecast](http://esri.github.com/100-lines-or-less-js/esri-weather-forecast/index.html) by [azmikamis](https://github.com/azmikamis)
+20. ... 
 
 ## Contest Period
 - Starts: 9:00 AM PST Friday, Mar 8, 2013
