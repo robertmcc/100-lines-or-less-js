@@ -148,15 +148,6 @@ a:active {
 	top: 5px;
 }
 
-.routeBtn, .clearBtn {
-	background: url("../images/header.gif") repeat-x scroll 20px transparent;
-	border: 1px solid #0033cc;
-	border-radius: 4px 4px 4px 4px;
-	height: 22px;
-	cursor: pointer;
-	float: left;
-}
-
 .home{
 	position: absolute;
 	top: 10px;
