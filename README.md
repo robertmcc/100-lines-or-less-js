@@ -35,7 +35,8 @@ Best of luck!
 22. [Realtime Collaborative Mapping](http://esri.github.com/100-lines-or-less-js/realtime-collaborative-mapping/index.html) by [leggetter](https://github.com/leggetter)
 23. [Beer GeoRSS](http://esri.github.com/100-lines-or-less-js/beerGeoRSS/beerGeoRSS.html) by [boeckMt](https://github.com/boeckMt)
 24. [World Migration Explorer](http://esri.github.com/100-lines-or-less-js/WorldMigrationExplorer/challenge.html) by [GeotecUJI](https://github.com/GeotecUJI)
-25. ...
+25. [Geotagged Wikipedia Articles](http://esri.github.com/100-lines-or-less-js/GeotaggedWikipediaArticles/index.html) by [rjstanley](https://github.com/rjstanley)
+26. ...
 
 ## Contest Period
 - Starts: 9:00 AM PST Friday, Mar 8, 2013
